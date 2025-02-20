@@ -1,0 +1,46 @@
+public static int findKthLargest(int number, int k) {
+        number = Math.abs(number);
+        if (k <= 0) return -1;
+        int[] kLargest = new int[k];
+        int length = 0;
+        while (number > 0) {
+            int digit = number % 10;
+            number /= 10;
+            if (length < k) {
+                // Array not full, add digit
+                kLargest[length] = digit;
+                length++;
+                if (length == k) {
+                    sortDescending(kLargest, length);
+                }
+            } else if (digit > kLargest[k - 1]) {
+                insertAndShift(kLargest, digit, k);
+            }
+        }
+        if (length < k) {
+            return -1;
+        }
+        return kLargest[k - 1];
+    }
+    private static void sortDescending(int[] arr, int length) {
+        for (int i = 0; i < length - 1; i++) {
+            for (int j = 0; j < length - 1 - i; j++) {
+                if (arr[j] < arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    private static void insertAndShift(int[] arr, int digit, int k) {
+        for (int i = 0; i < k; i++) {
+            if (digit > arr[i]) {
+                for (int j = k - 1; j > i; j--) {
+                    arr[j] = arr[j - 1];
+                }
+                arr[i] = digit;
+                break;
+            }
+        }
+    }
