@@ -11,9 +11,9 @@ public class FindSecondLargestDigit {
         number = (int) Math.abs(number);
         int largest = 0;
         int secondLargest = 0;
-        while (number > 0){
+        while (number > 0) {
             int lastDigit = number % 10;
-            if(lastDigit > largest){
+            if (lastDigit > largest) {
                 secondLargest = largest;
                 largest = lastDigit;
             } else if (lastDigit < largest && lastDigit > secondLargest) {
