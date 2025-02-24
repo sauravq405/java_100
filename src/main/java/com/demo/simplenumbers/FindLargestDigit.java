@@ -8,7 +8,7 @@ public class FindLargestDigit {
     }
 
     private static int findLargestDigit(int number) {
-        number = (int) Math.abs(number);
+        number = Math.abs(number);
         int maximum = 0;
         while (number > 0){
             int lastDigit = number % 10;

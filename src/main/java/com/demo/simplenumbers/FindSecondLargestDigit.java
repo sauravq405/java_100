@@ -2,7 +2,7 @@ package com.demo.simplenumbers;
 
 public class FindSecondLargestDigit {
     public static void main(String[] args) {
-        int number = -76594238;
+        int number = 222; //-76594238;
         int largestDigit = findLargestDigit(number);
         System.out.println("Second largest digit in the number "+number+" is: "+largestDigit);
     }
@@ -21,6 +21,7 @@ public class FindSecondLargestDigit {
             }
             number = number / 10;
         }
-        return secondLargest;
+        // Handle case where no second largest exists (all digits were same)
+        return (secondLargest == 0 && largest != 0) ? largest : secondLargest;
     }
 }
